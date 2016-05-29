@@ -14,21 +14,19 @@ use Illuminate\Support\Facades\Input;
 use App\User;
 use Flash;
 
+
 class EmailValidatorController extends Controller
 {
     public function validateEmail($token)
     {
         $email = Input::get('email');
         $user = User::where('email', $email)->first();
-        //dd($user);
-        if ($user)
+        if ($user) {
             if ($user->verified == 0) {
                 Flash::success('Email Verified!');
                 UserVerification::process($email, $token, 'users');
-                return null; //TODO redirect when user is verified
-            } else
-                return null; //TODO redirect when user is already verified
-        else
-            return null; //TODO redirect when user not exist already verified
+            }
+        }
+        return redirect('/');
     }
 }
