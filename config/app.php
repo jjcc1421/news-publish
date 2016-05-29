@@ -160,6 +160,7 @@ return [
          */
         Laracasts\Flash\FlashServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -211,6 +212,8 @@ return [
          */
         'Flash' => Laracasts\Flash\Flash::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

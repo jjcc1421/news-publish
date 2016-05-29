@@ -36,6 +36,8 @@ class NewsController extends Controller
         $news->user_id = Auth::user()->id;
 
         $news->save();
+
+        return redirect('/news');
     }
 
     public function addNews()

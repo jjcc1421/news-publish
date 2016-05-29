@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <a href="#" class="btn btn-info">Add new</a>
+                    <a href="{{route('path_to_add_news')}}" class="btn btn-info">Add new</a>
                 </div>
             </div>
             <div class="col-md-12">

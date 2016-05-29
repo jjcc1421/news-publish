@@ -23,5 +23,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/verification/{token}', 'EmailValidatorController@validateEmail');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/news', 'NewsController@index');
+    Route::get('/news', ['as' => 'path_to_news', 'uses' => 'NewsController@index']);
+    Route::get('/news/add', ['as' => 'path_to_add_news', 'uses' => 'NewsController@addNews']);
+    Route::post('/news', ['as' => 'path_to_post_news', 'uses' => 'NewsController@save']);
 });
