@@ -20,7 +20,11 @@ class NewsController extends Controller
 
     public function index()
     {
-        return null;//TODO route to news controller
+        $user = Auth::User();
+        $news = News::where('user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        return view('news.index', ['user' => $user, 'news' => $news]);
     }
 
     public function save()
@@ -32,5 +36,10 @@ class NewsController extends Controller
         $news->user_id = Auth::user()->id;
 
         $news->save();
+    }
+
+    public function addNews()
+    {
+        return view('news.addNews');
     }
 }

@@ -20,4 +20,8 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //Route::get('verification/error', 'Auth\AuthController@getVerificationError');
-Route::get('verification/{token}', 'EmailValidatorController@validateEmail');
+Route::get('/verification/{token}', 'EmailValidatorController@validateEmail');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/news', 'NewsController@index');
+});
