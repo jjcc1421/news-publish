@@ -23,7 +23,6 @@ class EmailValidatorController extends Controller
         if ($user)
             if ($user->verified == 0) {
                 UserVerification::process($email, $token, 'users');
-                F
                 return null; //TODO redirect when user is verified
             } else
                 return null; //TODO redirect when user is already verified
