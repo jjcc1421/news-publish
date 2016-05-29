@@ -155,6 +155,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /**
+         * Extras
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+        Jrean\UserVerification\UserVerificationServiceProvider::class,
 
     ],
 
@@ -201,6 +206,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        /**
+         * Extras
+         */
+        'Flash' => Laracasts\Flash\Flash::class,
+        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
 
     ],
 
