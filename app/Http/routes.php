@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+//Route::get('verification/error', 'Auth\AuthController@getVerificationError');
+Route::get('verification/{token}', 'EmailValidatorController@validateEmail');
