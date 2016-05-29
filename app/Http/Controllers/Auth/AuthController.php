@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Jrean\UserVerification\Traits\VerifiesUsers;
 use Jrean\UserVerification\Facades\UserVerification;
+use Flash;
 
 class AuthController extends Controller
 {
@@ -73,12 +74,9 @@ class AuthController extends Controller
         if ($user) {
             UserVerification::generate($user);
             UserVerification::send($user);
+            Flash::overlay('We send email validation, please validate email', 'Success!');
         }
         return $user;
     }
 
-    public function getVerification($token){
-        dd($email=Input::get('email'));
-        dd(UserVerification::process($email, $token, 'users'));
-    }
 }

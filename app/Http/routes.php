@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-    Flash::message('Welcome aboard!');
     return view('welcome');
 });
 
