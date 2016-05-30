@@ -161,6 +161,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 

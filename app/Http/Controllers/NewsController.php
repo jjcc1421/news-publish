@@ -45,7 +45,6 @@ class NewsController extends Controller
         if (Input::file('fileToUpload')->isValid()) {
             $mytime = Carbon::now();
             $image_name = rand(11111, 99999) . '_' . $mytime->day . $mytime->month . $mytime->year;
-
             $destinationPath = 'uploads'; // upload path
             $extension = Input::file('fileToUpload')->getClientOriginalExtension(); // getting image extension
             $fileName = $image_name . '.' . $extension; // renameing image
