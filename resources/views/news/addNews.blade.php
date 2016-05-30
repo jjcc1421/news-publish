@@ -1,5 +1,14 @@
 @extends('layouts.app')
-
+@section('css')
+@endsection
+@section('js')
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('textarea').ckeditor();
+        // $('.textarea').ckeditor(); // if class is prefered.
+    </script>
+@endsection
 @section('content')
     <div class="container">
         <h1>Add new article</h1>
@@ -17,7 +26,7 @@
             <textarea class="form-control" id="text" placeholder="Enter text" rows="8" name="text" required></textarea>
         </div>
         <div class="form-group">
-            <label for="fileToUpload">*Select image to upload::</label>
+            <label for="fileToUpload">*Select image to upload:</label>
             <input type="file" name="fileToUpload" id="fileToUpload" required>
         </div>
         <button type="submit" class="btn btn-info">Submit</button>

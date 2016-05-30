@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    public function user_id()
+    public function user()
     {
         return $this->hasOne('App\User');
     }

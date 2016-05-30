@@ -95,4 +95,11 @@ class NewsController extends Controller
     {
         return view('news.addNews');
     }
+
+    public function readArticle($articleId)
+    {
+        $article = News::findOrFail($articleId)
+            ->with('user');
+        return view('news.read_article', ['article']);
+    }
 }
