@@ -17,6 +17,7 @@ use App\News;
 use Carbon\Carbon;
 use Laracasts\Flash\Flash;
 use Validator;
+use PDF;
 
 class NewsController extends Controller
 {
@@ -110,5 +111,19 @@ class NewsController extends Controller
         $news = News::findOrFail($articleId);
         $user = User::findOrFail($news->user_id);
         return view('news.read_article', ['news' => $news, 'user' => $user]);
+    }
+
+    public function newsToPDF($articleId)
+    {
+        /*$pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        //return $pdf->stream();
+        return $pdf->download('hola.pdf');*/
+
+        $news = News::findOrFail($articleId);
+        $user = User::findOrFail($news->user_id);
+        $pdf = PDF::loadView('pdf.pdf', ['news' => $news, 'user' => $user]);
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');
     }
 }
