@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-
+});*/
+Route::get('/', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
+Route::get('/home', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
+Route::get('/news/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+/*Route::get('/home', 'HomeController@index');*/
 
 //Route::get('verification/error', 'Auth\AuthController@getVerificationError');
 Route::get('/verification/{token}', 'EmailValidatorController@validateEmail');
@@ -28,5 +30,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/news', ['as' => 'path_to_post_news', 'uses' => 'NewsController@save']);
     Route::delete('/news/delete/{articleID}', ['as' => 'path_to_delete_article', 'uses' => 'NewsController@delete']);
     Route::get('/news/remove/{articleID}', ['as' => 'path_to_remove_article', 'uses' => 'NewsController@deleteArticle']);
-    Route::get('/news/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
+
 });

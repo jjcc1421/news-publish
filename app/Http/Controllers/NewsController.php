@@ -30,6 +30,13 @@ class NewsController extends Controller
         return view('news.index', ['user' => $user, 'news' => $news]);
     }
 
+    public function home()
+    {
+        $news = News::orderBy('created_at', 'DESC')
+            ->paginate(10);
+        return view('index', ['news' => $news]);
+    }
+
     public function save()
     {
 
@@ -98,8 +105,8 @@ class NewsController extends Controller
 
     public function readArticle($articleId)
     {
-        $article = News::findOrFail($articleId)
-            ->with('user');
-        return view('news.read_article', ['article']);
+        $news = News::findOrFail($articleId);
+        $user = User::findOrFail($news->user_id);
+        return view('news.read_article', ['news' => $news, 'user' => $user]);
     }
 }

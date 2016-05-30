@@ -6,7 +6,7 @@
             @endif
             <p class="text-right">Created {{ $oneNews->created_at }}</p>
             <div class="media">
-                <a class="pull-left" href="#">
+                <a class="pull-left" href="{{route('path_to_read_article',[$oneNews->id])}}">
                     <img class="media-object"
                          src="{{($oneNews->photo_url)?$oneNews->photo_url:'http://placekitten.com/150/150'}}"
                          height="100">
