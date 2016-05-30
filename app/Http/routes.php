@@ -17,6 +17,7 @@
 Route::get('/', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
 Route::get('/home', ['as' => 'path_to_home', 'uses' => 'NewsController@home']);
 Route::get('/news/read/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
+Route::get('/news/pdf/{articleID}', ['as' => 'path_to_pdf_article', 'uses' => 'NewsController@newsToPDF']);
 Route::auth();
 
 /*Route::get('/home', 'HomeController@index');*/
@@ -30,6 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/news', ['as' => 'path_to_post_news', 'uses' => 'NewsController@save']);
     Route::delete('/news/delete/{articleID}', ['as' => 'path_to_delete_article', 'uses' => 'NewsController@delete']);
     Route::get('/news/remove/{articleID}', ['as' => 'path_to_remove_article', 'uses' => 'NewsController@deleteArticle']);
-    Route::get('/news/pdf/{articleID}', ['as' => 'path_to_remove_article', 'uses' => 'NewsController@newsToPDF']);
+
 
 });
