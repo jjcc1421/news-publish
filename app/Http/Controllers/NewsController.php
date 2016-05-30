@@ -36,7 +36,8 @@ class NewsController extends Controller
     {
         $news = News::orderBy('created_at', 'DESC')
             ->with('user')
-            ->paginate(10);
+            ->take(10)
+            ->get();
         return view('index', ['news' => $news]);
     }
 
@@ -55,10 +56,10 @@ class NewsController extends Controller
         if (Input::file('fileToUpload')->isValid()) {
             $mytime = Carbon::now();
             $image_name = rand(11111, 99999) . '_' . $mytime->day . $mytime->month . $mytime->year;
-            $destinationPath = 'uploads'; // upload path
-            $extension = Input::file('fileToUpload')->getClientOriginalExtension(); // getting image extension
-            $fileName = $image_name . '.' . $extension; // renameing image
-            Input::file('fileToUpload')->move($destinationPath, $fileName); // uploading file to given path
+            $destinationPath = 'uploads';
+            $extension = Input::file('fileToUpload')->getClientOriginalExtension();
+            $fileName = $image_name . '.' . $extension;
+            Input::file('fileToUpload')->move($destinationPath, $fileName);
             // sending back with message
 
         } else {
@@ -93,14 +94,6 @@ class NewsController extends Controller
         return $this->delete($articleId);//TODO Check if this is a good practice
     }
 
-    private function uploadPostImage()
-    {
-        $destinationPath = '/public/post/'; // upload path
-        $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-        $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-        Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
-    }
-
     public function addArticle()
     {
         return view('news.addNews');
@@ -115,15 +108,9 @@ class NewsController extends Controller
 
     public function newsToPDF($articleId)
     {
-        /*$pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        //return $pdf->stream();
-        return $pdf->download('hola.pdf');*/
-
         $news = News::findOrFail($articleId);
         $user = User::findOrFail($news->user_id);
         $pdf = PDF::loadView('pdf.pdf', ['news' => $news, 'user' => $user]);
         return $pdf->stream();
-        //return $pdf->download('invoice.pdf');
     }
 }
