@@ -28,4 +28,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\News');
     }
+
+    public function hasArticle($articleID)
+    {
+        $article = News::where('user_id', $this->id)->first();
+        if ($article)
+            return true;
+        return false;
+    }
 }

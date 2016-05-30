@@ -12,10 +12,12 @@
             <div class="col-md-12">
                 @foreach ($news as $oneNews)
                     <div class="well">
-                        <a href="#" class="text-danger">Remove</a>
+                        <a href="{{route('path_to_remove_article',[$oneNews->id])}}" class="text-danger">Remove</a>
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placekitten.com/150/150" height="100">
+                                <img class="media-object"
+                                     src="{{($oneNews->photo_url)?$oneNews->photo_url:'http://placekitten.com/150/150'}}"
+                                     height="100">
                                 <!--TODO change image-->
                             </a>
                             <div class="media-body">
