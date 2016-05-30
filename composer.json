@@ -11,7 +11,8 @@
         "jrean/laravel-user-verification": "^2.2",
         "laravelcollective/html": "5.2.*",
         "unisharp/laravel-ckeditor": "^4.5",
-        "barryvdh/laravel-dompdf": "0.6.*"
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "roumen/feed": "^2.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
