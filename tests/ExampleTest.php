@@ -13,7 +13,21 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        //$this->visit('/')->see('News');
+
+        $mailer = new \PHPMailer(true);
+        $mailer->addAddress("jjcc1421@gmail.com", "Juan Caicedo");
+        $mailer->Subject = "Test";
+        $mailer->MsgHTML("This is a test");
+        $sent = $mailer->send();
+        $this->assertTrue($sent);
     }
+
+
+    /*public function testMail()
+    {
+        $mailer = new \PHPMailer(true);
+        $sent = $mailer->send();
+        $this->assertTrue($sent);
+    }*/
 }

@@ -18,6 +18,7 @@ Route::get('/', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
 Route::get('/home', ['as' => 'path_to_home', 'uses' => 'NewsController@home']);
 Route::get('/news/read/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
 Route::get('/news/pdf/{articleID}', ['as' => 'path_to_pdf_article', 'uses' => 'NewsController@newsToPDF']);
+Route::get('/rss.xml', ['as' => 'path_to_index', 'uses' => 'FeedController@feed']);
 Route::auth();
 
 /*Route::get('/home', 'HomeController@index');*/
