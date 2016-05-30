@@ -17,9 +17,9 @@ class EmailVerify
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::User()->isVerified()) {
-            Flash::info('You must confirm your email');
-            return redirect()->route('path_to_index');
+        if (!Auth::User()->isVerified()) {
+            Flash::info('You must confirm your email to get access');
+            return redirect()->back();
         }
 
         return $next($request);
