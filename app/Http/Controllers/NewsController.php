@@ -25,6 +25,7 @@ class NewsController extends Controller
     {
         $user = Auth::User();
         $news = News::where('user_id', $user->id)
+            ->with('user')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
         return view('news.index', ['user' => $user, 'news' => $news]);
@@ -33,6 +34,7 @@ class NewsController extends Controller
     public function home()
     {
         $news = News::orderBy('created_at', 'DESC')
+            ->with('user')
             ->paginate(10);
         return view('index', ['news' => $news]);
     }
@@ -98,7 +100,7 @@ class NewsController extends Controller
         Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
     }
 
-    public function addNews()
+    public function addArticle()
     {
         return view('news.addNews');
     }

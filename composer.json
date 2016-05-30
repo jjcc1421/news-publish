@@ -10,7 +10,8 @@
         "laracasts/flash": "^2.0",
         "jrean/laravel-user-verification": "^2.2",
         "laravelcollective/html": "5.2.*",
-        "unisharp/laravel-ckeditor": "^4.5"
+        "unisharp/laravel-ckeditor": "^4.5",
+        "barryvdh/laravel-dompdf": "0.6.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

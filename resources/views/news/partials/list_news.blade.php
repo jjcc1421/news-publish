@@ -5,6 +5,9 @@
                 <a href="{{route('path_to_remove_article',[$oneNews->id])}}" class="text-danger">Remove</a>
             @endif
             <p class="text-right">Created {{ $oneNews->created_at }}</p>
+            <p class="text-right">
+                <small>By: {{ $oneNews->user->name }}</small>
+            </p>
             <div class="media">
                 <a class="pull-left" href="{{route('path_to_read_article',[$oneNews->id])}}">
                     <img class="media-object"

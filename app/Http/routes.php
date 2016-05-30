@@ -15,8 +15,8 @@
     return view('welcome');
 });*/
 Route::get('/', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
-Route::get('/home', ['as' => 'path_to_index', 'uses' => 'NewsController@home']);
-Route::get('/news/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
+Route::get('/home', ['as' => 'path_to_home', 'uses' => 'NewsController@home']);
+Route::get('/news/read/{articleID}', ['as' => 'path_to_read_article', 'uses' => 'NewsController@readArticle']);
 Route::auth();
 
 /*Route::get('/home', 'HomeController@index');*/
@@ -25,8 +25,8 @@ Route::auth();
 Route::get('/verification/{token}', 'EmailValidatorController@validateEmail');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/news/add', ['as' => 'path_to_add_news', 'uses' => 'NewsController@addNews']);
     Route::get('/news', ['as' => 'path_to_news', 'uses' => 'NewsController@index']);
+    Route::get('/news/add', ['as' => 'path_to_add_news', 'uses' => 'NewsController@addArticle']);
     Route::post('/news', ['as' => 'path_to_post_news', 'uses' => 'NewsController@save']);
     Route::delete('/news/delete/{articleID}', ['as' => 'path_to_delete_article', 'uses' => 'NewsController@delete']);
     Route::get('/news/remove/{articleID}', ['as' => 'path_to_remove_article', 'uses' => 'NewsController@deleteArticle']);

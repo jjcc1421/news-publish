@@ -162,6 +162,7 @@ return [
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -215,6 +216,7 @@ return [
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
