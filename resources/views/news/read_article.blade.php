@@ -10,7 +10,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 well">
-                    <a href="{{route('path_to_pdf_article',[$news->id])}}" class="btn btn-info">Get PDF</a>
+                    <a href="{{route('path_to_pdf_article',[$news->id])}}" class="btn btn-info" target="_blank">Get PDF</a>
                 </div>
             </div>
         </article>
